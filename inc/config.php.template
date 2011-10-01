@@ -1,0 +1,12 @@
+<?php
+
+//Enter the correct values, and rename this file to config.php.  You can also delete this line if you want.
+
+$db_user = "user";
+$db_password = "password";
+$db_loc = "localhost";
+$db_db = "database_name";
+
+$path = "/var/www/where_is_this_located";
+
+?>
