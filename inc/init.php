@@ -15,7 +15,6 @@ if(!isset($_SESSION['user'])) {
 	$_SESSION['user']->id = 1;
 	$_SESSION['user'] = 1; 
 } else {
-	echo "loading stuff";
 	 loadStuff();
 }
 

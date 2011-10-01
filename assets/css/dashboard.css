@@ -1,0 +1,18 @@
+.giftGrid, .userGrid {
+	position: relative;
+	width: 90%;
+	border: 1px solid #1E1E1E;
+	height: 30%;
+	left: 50%;
+	margin: 20px 0 20px -45%;
+}
+
+.giftToken, .userToken {
+	float:  left;
+	width: 300px;
+	overflow: hidden;
+	border: 1px solid #1E1E1E;
+	height: 100px;
+	margin: 5px;
+}
+
