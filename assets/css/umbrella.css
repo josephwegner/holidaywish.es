@@ -1,0 +1,35 @@
+/*
+* Color Scheme:
+* 
+* Background: #00010D
+* Borders/Highlights: #122031
+* Low-importance text: (clicked links): #0A131A
+* Reguar Text: #BFE2FF
+* Important Text (links): #566669
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #00010D;
+	color: #BFE2FF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #566669;
+}
+
+hr {
+	color: #122031;
+	background-color: #122031;
+	height: 2px;
+	border: none;
+}
+
+.clear {
+	clear: both;
+}
+
+img.amazonLogo {
+	height: 20px;
+}	

@@ -4,11 +4,12 @@ $classBuilder['Index'] = new IndexView();
 
 class IndexView {
 
-public function show($args) {
+public function show($args) { 
 /* Content Starts Here */
 ?>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="assets/css/umbrella.css" />
 <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css" />
 <title>Wishit Index</title>
 </head>
@@ -17,14 +18,16 @@ public function show($args) {
 <br>
 <hr>
 <div class="giftGrid">
-<?php for($i=0, $max=sizeof($args['gifts']); $i < $max; $i++) { ?>
-	<div class="giftToken"><?php echo $args['gifts'][$i]->name; ?></div>
-<?php } ?>
+	<h2>Your Wishlist</h2>
+<?php for($i=0, $max=sizeof($args['gifts']); $i < $max; $i++) { 
+	GLBL::$helpers->View->giftToken($args['gifts'][$i]);		
+} ?>
 </div>
 <div class="userGrid">
-<?php for($i=0, $max=sizeof($args['users']); $i < $max; $i++) { ?>
-	<div class="userToken"><?php echo $args['users'][$i]; ?></div>
-<?php } ?>
+	<h2><?php echo $args['ssUsername'];?>'s Wishlist</h2>
+<?php for($i=0, $max=sizeof($args['ssGifts']); $i < $max; $i++) {
+	GLBL::$helpers->View->giftToken($args['ssGifts'][$i]);
+} ?>
 </div>
 </body>
 </html>

@@ -12,7 +12,7 @@ class GiftsModel {
 	 * @return bool false=didn't work
 	 * @return array of gift object literals
 	*/
-	public function getMyGiftDetails($id) {
+	public function getGiftDetails($id) {
 		if(!is_numeric($id)) return false;
 
 		$sql = "SELECT gifts.name, gifts.thumbnail, gifts.description, gifts.notes, gifts.price, gifts.link, gifts.purchased, gifts.go_in_on, users.username".

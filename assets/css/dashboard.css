@@ -1,18 +1,53 @@
+/*
+* Color Scheme:
+* 
+* Background: #00010D
+* Borders/Highlights: #122031
+* Low-importance text: (clicked links): #0A131A
+* Reguar Text: #BFE2FF
+* Important Text (links): #566669
+*/
 .giftGrid, .userGrid {
 	position: relative;
 	width: 90%;
-	border: 1px solid #1E1E1E;
-	height: 30%;
+	border: 1px solid #122031;
+	background-color: #0A131A;
+	height: 40%;
 	left: 50%;
 	margin: 20px 0 20px -45%;
+}
+
+.giftGrid > h2, .userGrid > h2 {
+	text-align: center;
+	margin: 0;
+	padding: 0;
 }
 
 .giftToken, .userToken {
 	float:  left;
 	width: 300px;
 	overflow: hidden;
-	border: 1px solid #1E1E1E;
+	border: 1px solid #122031;
+	background-color: #00010D;
 	height: 100px;
 	margin: 5px;
 }
 
+.gridLeft {
+	float: left;
+}
+
+.gridRight {
+	float: right;
+	padding: 10px;
+	font-size: 12px;
+}
+
+.gridThumbnail {
+	height: 60px;
+	width: 60px;
+}
+
+.thumbnailHolder {
+	margin: 20px 10px 20px 10px;
+}
