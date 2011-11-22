@@ -5,6 +5,37 @@ $classBuilder['User'] = new UserModel();
 class UserModel {
 
 	/*
+	 * Purpose: Register a user
+	 * 
+	 * @param int user's id (because the user is already created
+	 * @param string username
+	 * @param string password
+	 *
+	 * @return boolean true=worked
+	 * @return string error
+	*/
+	public function register($id, $user, $pass) {
+		if(!is_numeric($id)) return "Error Registering.  Try again later.";
+
+		$user = mysql_escape_string($user);
+		$pass = mysql_escape_string($pass);
+
+		$sql = "SELECT `id` FROM users WHERE `username`='".$user."'";
+		$check = mysql_query($sql);
+
+		if(mysql_num_rows($check) > 0) return "Username already in use";
+
+		$salt = $this->makeSalt();
+		
+		$password = $this->encodePassword($user, $pass, $salt);
+
+		$sql = "UPDATE users SET username='".$user."', password='".$password."', salt='".$salt."' WHERE id=".$id;
+		mysql_query($sql);
+	
+		return true;
+	}
+
+	/*
 	 * Purpose: Attempt to log a user in
 	 *
 	 * @param string username
@@ -185,6 +216,26 @@ class UserModel {
 		$h_salt = sha1($salt);
 
 		return sha1($h_user.$h_pass.$h_salt);
+	}
+	
+	/*
+	 * Purpose: Make some salt
+	 *
+	 * @param int length of salt.  Default is 8
+	 *
+	 * @return string salt
+	*/
+	private function makeSalt($len = 8) {
+		if(!is_numeric($len)) $len = 8;
+
+		$chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+		$string = "";
+		for($i=0; $i<$len; $i++) {
+				$string .= $chars[mt_rand(0, strlen($chars))];
+		}
+
+		return $string;
 	}
 }
 ?>

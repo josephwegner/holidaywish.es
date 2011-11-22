@@ -1,6 +1,8 @@
 <?php
 
 function loadStuff() {
+	global $path;
+	
 	$masters = array(
 		"controllers" => loadAllDir($path."controllers"),
 		"views" => loadAllDir($path."views"),
@@ -30,7 +32,7 @@ function loadStuff() {
 function loadAllDir($dir) {
 	$od = opendir($dir);
 	$classBuilder = array();
-
+	
 	while(false !== ($file = readdir($od))) {
 		
 		if(is_file($dir."/".$file)) {

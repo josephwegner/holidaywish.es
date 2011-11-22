@@ -30,6 +30,36 @@ class GiftsModel {
 		return $allGifts;
 	}
 
+	/*
+	 * Purpose: Add a gift to the database
+	 *
+	 * @param int user's id
+	 * @param string gift name
+	 * @param string thumbnail link
+	 * @param string description
+	 * @param double price
+	 * @param string purchase link
+	 *
+	 * @return boolean true=worked
+	 * @return string error message
+	*/
+	public function addGift($id, $name, $thumbnail, $description, $price, $link) {
+		if(!is_numeric($id)) return "You can't add gifts!";
+		if(!is_numeric($price)) return "The price has to be a number!";
+		
+		$name = mysql_escape_string($name);
+		$description = mysql_escape_string($description);
+		$thumbnail = mysql_escape_string($thumbnail);
+		$link = mysql_escape_string($link);
+
+		$sql = "INSERT INTO gifts (`user_id`, `name`, `thumbnail`, `description`, `price`, `link`) VALUES (".
+			$id.", '".$name."', '".$thumbnail."', '".$description."', ".$price.", '".$link."')";
+
+		mysql_query($sql);
+	
+		return true;
+	}
+
 }
 
 ?>

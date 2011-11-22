@@ -24,6 +24,22 @@ class ListController {
 	
 		GLBL::$views->Index->show($sendView);
 	}
+
+	public function addGift() {
+		$inserted = GLBL::$models->Gifts->addGift($_SESSION['user'], $_POST['name'], $_POST['thumbnail'], $_POST['description'],
+								$_POST['price'], $_POST['link']);
+
+		if($inserted === true) {
+			$gifts = GLBL::$models->Gifts->getGiftDetails($_SESSION['user']);
+			
+			for($i=0; $i < sizeof($gifts); $i++) {
+				GLBL::$helpers->View->giftToken($gifts[$i]);
+			}
+		} else {
+			echo "<div class='errorBar'>".$inserted."</div>";
+		}
+
+	}
 		
 }
 ?>

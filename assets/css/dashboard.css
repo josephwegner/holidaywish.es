@@ -51,3 +51,30 @@
 .thumbnailHolder {
 	margin: 20px 10px 20px 10px;
 }
+
+button.prettyButton {
+	padding: 10px;
+	border: 1px solid #122031;
+	color: #566669;
+	font-weight: bold;
+	background-color: #0A131A;
+	cursor: pointer;
+}
+
+button.addGift {
+	margin-left: 50px;
+}
+
+div#popupDialog {
+	display: none;
+	position: absolute;
+	z-index: 100;
+	left: 45%;
+	top: 50px;
+	padding: 20px 100px 20px 100px;
+	background-color: #00010D;
+	border: 1px solid #122031;
+}
+div#popupDialog input {
+	margin-bottom: 15px;
+}	
