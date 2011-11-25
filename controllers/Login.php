@@ -16,7 +16,8 @@ class LoginController {
 			$login;
 			
 			if($login = GLBL::$models->User->login($_POST['username'], $_POST['password'])) {
-				$_SESSION['user'] = $login;
+				$_SESSION['user'] = $login->id;
+				$_SESSION['admin'] = ($login->admin);
 				header("Location: index.php");
 				die();	
 			} else {
@@ -46,7 +47,7 @@ class LoginController {
 					mysql_query($sql);
 
 					if($login = GLBL::$models->User->login($_POST['username'], $_POST['password'])) {
-						$_SESSION['user'] = $login;
+						$_SESSION['user'] = $login->id;
 						header("Location: index.php");
 						die();
 					}

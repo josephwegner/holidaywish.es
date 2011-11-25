@@ -32,4 +32,19 @@ hr {
 
 img.amazonLogo {
 	height: 20px;
+}
+
+.fleft {
+	float: left;
 }	
+.fright {
+	float: right;
+}
+
+.tleft {
+	text-align: left;
+}
+.tright {
+	text-align: right;
+}
+

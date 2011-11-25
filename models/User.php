@@ -52,7 +52,7 @@ class UserModel {
 		$user = mysql_escape_string($user);
 		$pass = mysql_escape_string($pass);
 		
-		$sql = "SELECT `password`, `salt`, `id` FROM users WHERE `username`='".$user."'";
+		$sql = "SELECT `password`, `salt`, `id`, `is_admin` FROM users WHERE `username`='".$user."'";
 		$userDat = mysql_query($sql);
 	
 		if(mysql_num_rows($userDat) != 1) return false;
@@ -60,7 +60,10 @@ class UserModel {
 		$data = mysql_fetch_object($userDat);
 		
 		if($this->encodePassword($user, $pass, $data->salt) == $data->password) {//It worked
-			return $data->id;
+			$ret = new StdClass();
+			$ret->id = $data->id;
+			$ret->admin = $data->is_admin;
+			return $ret;
 		} else {//Bad Login
 			return false;
 		}

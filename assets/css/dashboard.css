@@ -61,11 +61,7 @@ button.prettyButton {
 	cursor: pointer;
 }
 
-button.addGift {
-	margin-left: 50px;
-}
-
-div#popupDialog {
+div.popupDialog {
 	display: none;
 	position: absolute;
 	z-index: 100;
@@ -75,6 +71,9 @@ div#popupDialog {
 	background-color: #00010D;
 	border: 1px solid #122031;
 }
-div#popupDialog input {
+di.#popupDialog input {
 	margin-bottom: 15px;
+}
+.headButtons {
+	padding: 0 75px 0 75px;
 }	
