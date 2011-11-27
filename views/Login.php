@@ -9,6 +9,7 @@ public function show($args) {
 ?>
 <html>
 <head>
+<?php GLBL::$helpers->View->header(); ?>
 <link rel="stylesheet" type="text/css" href="assets/css/umbrella.css" />
 <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css" />
 <title>Wishit Login</title>

@@ -9,6 +9,7 @@ public function show($args) {
 ?>
 <html>
 <head>
+<?php GLBL::$helpers->View->header(); ?>
 <link rel="stylesheet" type="text/css" href="assets/css/umbrella.css" />
 <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>

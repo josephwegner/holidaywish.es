@@ -23,6 +23,22 @@ class ViewHelper {
                 <div class="clear"></div>
         </div>
 	<?
+	}
+
+	/*
+	 * Purpose: Echo out a standard header for all pages
+	*/
+	public function header() {
+		?>
+		<script type="text/javascript">
+		  var uvOptions = {};
+		  (function() {
+		    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+		    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/J3RVwRlrmRQLdoRJn4yCQ.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+		  })();
+		</script>
+		<?php
 	}	
 
 }
