@@ -13,11 +13,12 @@ class ListController {
 		$secretSanta = new StdClass();
 		$secretSanta->user =  GLBL::$models->User->getSSRecipient($_SESSION['user']);
 		$secretSanta->gifts = GLBL::$models->Gifts->getGiftDetails($secretSanta->user->id);	
-
+		
 		$sendView = array(
 			"username" => $username,
 			"gifts" => $myGifts,
 			"ssUsername" => $secretSanta->user->username,
+			"ssName" => $secretSanta->user->name,
 			"ssGifts" => $secretSanta->gifts,
 			"ssIsNew" => $secretSanta->user->isNew
 		);

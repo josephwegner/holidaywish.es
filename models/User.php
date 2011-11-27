@@ -90,6 +90,25 @@ class UserModel {
 	}
 
 	/*
+	 * Purpose: Return the user's name
+	 * 
+	 * @param int id of user
+	 *
+	 * @return bool false=didn't work
+	 * @return string name
+	*/
+	public function getName($id) {
+		if(!is_numeric($id)) return false;
+
+		$sql = "SELECT `name` FROM users WHERE `id`=".$id;
+		
+		$data = mysql_query($sql);
+		$arr = mysql_fetch_array($data);
+		
+		return $arr['name'];
+	}
+
+	/*
 	 * Purpose: Get a list of all the usernames, except for the specified user
 	 *
 	 * @param int (opt) The user's id.  Default is the current user
@@ -132,7 +151,7 @@ class UserModel {
 
 		if(!is_numeric($id)) return false;
 
-		$sql = "SELECT secretsanta.recipient, users.username FROM secretsanta, users WHERE secretsanta.santa=".$id." AND users.id=secretsanta.recipient";
+		$sql = "SELECT secretsanta.recipient, users.username, users.name FROM secretsanta, users WHERE secretsanta.santa=".$id." AND users.id=secretsanta.recipient";
 		$data = mysql_query($sql);
 		
 		if(mysql_num_rows($data) != 1) {
@@ -148,6 +167,7 @@ class UserModel {
 			$user = new StdClass();
 			$user->id = $userData->recipient;
 			$user->username = $userData->username;
+			$user->name = $userData->name;
 			$user->isNew = $newSecretSanta;
 			
 			return $user;		

@@ -64,7 +64,7 @@ function createGift() {
 } ?>
 </div>
 <div class="userGrid">
-	<h2><?php echo $args['ssUsername'];?>'s Wishlist</h2>
+	<h2><?php echo $args['ssName'];?>'s Wishlist</h2>
 <?php for($i=0, $max=sizeof($args['ssGifts']); $i < $max; $i++) {
 	GLBL::$helpers->View->giftToken($args['ssGifts'][$i]);
 } ?>
