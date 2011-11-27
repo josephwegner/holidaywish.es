@@ -39,7 +39,7 @@ function createGift() {
 	});
 }
 </script>
-<title>Wishit Index</title>
+<title>HolidayWish.es Index</title>
 </head>
 <body>
 <center><h1><?php echo $args['username']; ?>'s  Dashboard</h1></center>

@@ -12,11 +12,11 @@ public function show($args) {
 <?php GLBL::$helpers->View->header(); ?>
 <link rel="stylesheet" type="text/css" href="assets/css/umbrella.css" />
 <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css" />
-<title>Wishit Login</title>
+<title>HolidayWish.es Login</title>
 </head>
 <body>
 <center>
-	<h1>Wishit Login</h1>
+	<h1>HolidayWish.es Login</h1>
 	<form id="loginForm" action="login.php" method="POST">
 		<?php if(isset($args['failed']) && $args['failed'] === true) { ?>
 		<span class="errorHighlight">Failed Login.  Please try again.</span>

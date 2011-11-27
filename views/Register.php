@@ -11,15 +11,15 @@ public function show($args) {
 <head>
 <?php GLBL::$helpers->View->header(); ?>
 <link rel="stylesheet" type="text/css" href="assets/css/umbrella.css" />
-<title>Wishit Registration</title>
+<title>HolidayWish.es Registration</title>
 </head>
 <body>
 <center>
-	<h1>Wishit Registration</h1>
+	<h1>HolidayWish.es Registration</h1>
 	<br>
-	<h2>Welcome to Wishit, <?php echo $args['user']->name; ?></h2>
+	<h2>Welcome to HolidayWish.es, <?php echo $args['user']->name; ?></h2>
 	<br>
-	<p style="width: 400px; text-align: justify;">Wishit is a great place to manage all your wish list needs.  We're currently in the very early stages of development, so we only support a few types of wish lists, but we intend to quickly add more.
+	<p style="width: 400px; text-align: justify;">HolidayWish.es is a great place to manage all your wish list needs.  We're currently in the very early stages of development, so we only support a few types of wish lists, but we intend to quickly add more.
 	<br><br>
 	We're going to need just a tiny bit of information from you to get started.</p>
 	<form id="registerForm" action="#" method="POST">
