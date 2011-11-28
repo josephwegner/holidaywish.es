@@ -71,9 +71,18 @@ div.popupDialog {
 	background-color: #00010D;
 	border: 1px solid #122031;
 }
-di.#popupDialog input {
+div.#popupDialog input {
 	margin-bottom: 15px;
 }
 .headButtons {
 	padding: 0 75px 0 75px;
-}	
+}
+
+#myGifts .giftToken {
+	cursor: pointer;
+}
+
+.delete {
+	background-color: #4A0000 !important;
+	color: #967878 !important;
+}		

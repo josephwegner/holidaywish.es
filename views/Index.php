@@ -14,6 +14,19 @@ public function show($args) {
 <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function() {
+	setHooks();
+});
+function setHooks() {
+	$("#myGifts").children("div.giftToken").hover(function() {
+		$(this).css('background-color', '#566669');
+	}, function() {
+		$(this).css('background-color', '#00010D');
+	});
+
+	$("#myGifts").children("div.giftToken").click(function() { editPopup($(this).attr('id')); });
+	$("#addGiftDialog").find("button.prettyButton").click(createGift);
+}
 function popupDialog(id) {
 	$("#" + id).children("input").val("");
 
@@ -32,15 +45,79 @@ function createGift() {
 			if(msg.indexOf('errorBar') < 0) {
 				$("#addGiftDialog").fadeOut(400);
 				$(".giftGrid").html(msg);
+				setHooks();
 			} else {
 				$("#addGiftDialog").prepend(msg);
 			}
 		}
 	});
 }
+function updateGift() {
+	$(".errorBar").remove();
+
+	var data = $("#addGiftDialog").children("input").serialize();
+
+	$.ajax({
+		type: "POST",
+		url: "ajax/updateGift.php",
+		data: data,
+		success: function(msg) {
+			if(msg.indexOf('errorBar') < 0) {
+				$("#addGiftDialog").fadeOut(400);
+				$(".giftGrid").html(msg);
+
+				$("#addGiftDialog").find("button.delete").remove();
+				$("#addGiftDialog").find("button.prettyButton").unbind('click').text("Add Gift").click(createGift);
+
+				setHooks();
+			} else {
+				$("#addGiftDialog").prepend(msg);
+			}
+		}
+	});
+}
+function editPopup(id) {
+	var giftHold  = $("#" + id);
+
+	var imgSrc = $(giftHold).find('.gridThumbnail').attr('src');
+	var title = $(giftHold).find('.gridTitle').text();
+	var desc = $(giftHold).find('.gridDesc').text();
+	var link = $(giftHold).find('a').attr('href');
+	var price = $(giftHold).find('.price').text().replace('$', '');
+	
+	popupDialog("addGiftDialog");
+
+	$("input#name").val(title);
+	$("input#thumbnail").val(imgSrc);
+	$("input#description").val(desc);
+	$("input#price").val(price);
+	$("input#link").val(link);
+	$("#id").val(id.replace("gift", ""));
+
+	$("#addGiftDialog").find("button.prettyButton").text("Update Gift").unbind("click").click(updateGift).before(
+		"<button class='prettyButton delete' onClick='delGift(\"" + id + "\");'>Delete Gift</button>");
+	
+}
+function delGift(id) {
+	id = id.replace("gift", "");
+
+	$.ajax({
+		type: "POST",
+		url: "ajax/delGift.php",
+		data: "id=" + id,
+		success: function(msg) {
+			$("#gift" + id).remove();
+
+			$("#addGiftDialog").find("button.delete").remove();
+			$("#addGiftDialog").find("button.prettyButton").unbind('click').text("Add Gift").click(createGift);
+		
+			$("#addGiftDialog").fadeOut(400);
+		}	
+	});
+}
 </script>
 <title>HolidayWish.es Index</title>
-</head>
+</head
 <body>
 <center><h1><?php echo $args['username']; ?>'s  Dashboard</h1></center>
 <br>
@@ -54,11 +131,11 @@ function createGift() {
 		<button onClick="popupDialog('manageRelationshipsDialog');" class="prettyButton relationships">Relationships</button>
 		<button onClick="popupDialog('sendInvitesDialog');" class="prettyButton sendInvites">Send Invites</button>
 	<?php } ?>
-		<button onclick="window.location = 'logout.php';"class="prettyButton">Logout</button>
+		<button onClick="window.location = 'logout.php';"class="prettyButton">Logout</button>
 	</div>
 </div>
 <hr>
-<div class="giftGrid">
+<div id="myGifts" class="giftGrid">
 	<h2>Your Wishlist</h2>
 <?php for($i=0, $max=sizeof($args['gifts']); $i < $max; $i++) { 
 	GLBL::$helpers->View->giftToken($args['gifts'][$i]);		
@@ -85,7 +162,8 @@ function createGift() {
 	<input type="number" name="price" id="price" /><br>
 	<label for="link">Purchase Link</label><br>
 	<input type="text" name="link" id="link" /><br><br>
-	<button class="prettyButton" onClick="createGift();">Add Gift</button>
+	<input type="hidden" name="id" id="id" />
+	<button class="prettyButton">Add Gift</button>
 </div>
 <div id="addUserDialog" class="popupDialog">
 

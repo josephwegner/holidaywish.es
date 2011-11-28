@@ -41,6 +41,24 @@ class ListController {
 		}
 
 	}
+	public function updateGift() {
+		$inserted = GLBL::$models->Gifts->updateGift($_SESSION['user'], $_POST['id'], $_POST['name'], $_POST['thumbnail'], $_POST['description'],
+								$_POST['price'], $_POST['link']);
+
+		if($inserted === true) {
+			$gifts = GLBL::$models->Gifts->getGiftDetails($_SESSION['user']);
+			
+			for($i=0; $i < sizeof($gifts); $i++) {
+				GLBL::$helpers->View->giftToken($gifts[$i]);
+			}
+		} else {
+			echo "<div class='errorBar'>".$inserted."</div>";
+		}
+
+	}
+	public function deleteGift() {
+		echo GLBL::$models->Gifts->deleteGift($_SESSION['user']);
+	}
 		
 }
 ?>
