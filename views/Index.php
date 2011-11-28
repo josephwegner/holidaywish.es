@@ -161,8 +161,6 @@ function delGift(id) {
 	<input type="text" name="thumbnail" id="thumbnail" placeholder="Image URL" /><br>
 	<label for="description">Description</label><br>
 	<input type="text" name="description" id="description" /><br>
-	<label for="notes">Notes</label><br>
-	<textarea name="notes" name="notes" id="notes"></textarea><br>
 	<label for="price">Price</label><br>
 	<input type="number" name="price" id="price" /><br>
 	<label for="link">Purchase Link</label><br>
