@@ -77,6 +77,11 @@ function updateGift() {
 	});
 }
 function editPopup(id) {
+	if($("#addGiftDialog").find("button.delete").length > 0) {
+		$("#addGiftDialog").find("button.delete").remove();
+		$("#addGiftDialog").find("button.prettyButton").unbind('click');
+	}
+
 	var giftHold  = $("#" + id);
 
 	var imgSrc = $(giftHold).find('.gridThumbnail').attr('src');
