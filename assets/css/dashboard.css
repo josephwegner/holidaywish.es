@@ -35,12 +35,14 @@
 
 .gridLeft {
 	float: left;
+	width: 60px;
 }
 
 .gridRight {
 	float: right;
 	padding: 10px;
 	font-size: 12px;
+	width: 200px;
 }
 
 .gridThumbnail {
