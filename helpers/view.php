@@ -18,7 +18,7 @@ class ViewHelper {
 			<div class="gridRight">
 				<span class="gridTitle"><?php echo $gift->name; ?></span><br>
 				<span class="gridDesc"><?php echo $gift->description; ?></span><br>
-				Buy it <?php if(!empty($gift->link)) { ?><a href="<?php echo $gift->link; ?>">online</a> <?php } ?>for <span class="price">$<?php echo $gift->price; ?></span>
+				<?php if(!empty($gift->link) || $gift->price > 0) { ?>Buy it <?php if(!empty($gift->link)) { ?><a href="<?php echo $gift->link; ?>">online</a> <?php } if($gift->price > 0) {?>for <span class="price">$<?php echo $gift->price; } }?></span>
 			</div>
 			<div class="clear"></div>
         	</div>

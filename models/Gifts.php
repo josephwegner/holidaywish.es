@@ -44,6 +44,8 @@ class GiftsModel {
 	 * @return string error message
 	*/
 	public function addGift($id, $name, $thumbnail, $description, $price, $link) {
+		if(empty($price)) $price = 0;
+		
 		if(!is_numeric($id)) return "You can't add gifts!";
 		if(!is_numeric($price)) return "The price has to be a number!";
 		
