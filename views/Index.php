@@ -25,7 +25,7 @@ function setHooks() {
 	});
 
 	$("#myGifts").children("div.giftToken").click(function() { editPopup($(this).attr('id')); });
-	$("#addGiftDialog").find("button.prettyButton").click(createGift);
+	$("#addGiftDialog").find("button.prettyButton").unbind('click').click(createGift);
 }
 function popupDialog(id) {
 	$("#" + id).children("input").val("");
